@@ -6,7 +6,7 @@
 /// @author Kitty Giraudel
 /// @param {String} $context
 @mixin when-inside($context) {
-    #{$context} & {
-      @content;
-    }
+  #{$context} & {
+    @content;
   }
+}

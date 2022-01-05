@@ -81,8 +81,8 @@ $media-expressions: (
 ///
 $unit-intervals: (
   'px': 1,
-  'em': 0.01,
-  'rem': 0.1,
+  'em': .01,
+  'rem': .1,
   '': 0
 ) !default;
 
@@ -188,6 +188,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
     @error $message;
   } @else {
     @warn $message;
+
     $_: noop();
   }
 
@@ -235,7 +236,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
       $value: get-expression-value($condition, $operator);
 
       @if ($prefix == 'max' and $value <= $no-media-breakpoint-value) or
-          ($prefix == 'min' and $value > $no-media-breakpoint-value) {
+        ($prefix == 'min' and $value > $no-media-breakpoint-value) {
         @return false;
       }
     } @else if not index($im-no-media-expressions, $condition) {
@@ -423,7 +424,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
   $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
 
   // Remove +/- sign if present at first character
-  @if ($first-character == '+' or $first-character == '-') {
+  @if $first-character == '+' or $first-character == '-' {
     $value: str-slice($value, 2);
   }
 
@@ -431,7 +432,7 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
     $character: str-slice($value, $i, $i);
 
     @if not (index(map-keys($numbers), $character) or $character == '.') {
-      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i));
     }
 
     @if $character == '.' {
@@ -552,9 +553,9 @@ $im-no-media-expressions: ('screen', 'portrait', 'landscape') !default;
 ///
 @mixin media($conditions...) {
   @if ($im-media-support and length($conditions) == 0) or
-      (not $im-media-support and im-intercepts-static-breakpoint($conditions...)) {
+    (not $im-media-support and im-intercepts-static-breakpoint($conditions...)) {
     @content;
-  } @else if ($im-media-support and length($conditions) > 0) {
+  } @else if $im-media-support and length($conditions) > 0 {
     @media #{unquote(parse-expression(nth($conditions, 1)))} {
       // Recursive call
       @include media(slice($conditions, 2)...) {

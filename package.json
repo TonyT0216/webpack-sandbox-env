@@ -7,7 +7,7 @@
     "build:dev": "NODE_ENV=development webpack serve --config webpack.dev.js",
     "build:prod": "NODE_ENV=production webpack serve --config webpack.prod.js",
     "lint:js": "eslint src/**/*.js || true",
-    "lint:styles": "stylelint '**/*.scss' --fix",
+    "lint:styles": "stylelint '**/*.scss' --fix ",
     "prettier": "prettier --write 'src/**/*.js'",
     "test": "jest"
   },
