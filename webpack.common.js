@@ -6,10 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./configs/paths');
 
 module.exports = {
-    entry: [paths.src + '/app.js'],
+    entry: [paths.src + '/index.js'],
 
     output: {
-        filename: '[name].[bundle].js',
+        filename: '[name].bundle.js',
         path: paths.build,
         publicPath: '/'
     },
