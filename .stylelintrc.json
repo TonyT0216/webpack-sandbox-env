@@ -1,0 +1,29 @@
+{
+    "extends": ["stylelint-config-standard-scss"],
+    "plugins": [
+        "stylelint-order",
+        "stylelint-scss"
+    ],
+    "rules": {
+        "at-rule-no-unknown": null,
+        "scss/at-rule-no-unknown": [
+            true,
+            {
+                "ignoreAtRules": ["extends"]
+            }
+        ],
+        "block-no-empty": null,
+        "max-empty-lines": 4,
+        "string-quotes": "single",
+        "number-leading-zero": "never",
+        "max-nesting-depth": 2,
+        "order/order": [
+            "custom-properties",
+            "declarations"
+        ],
+        "order/properties-order": [
+            "width",
+            "height"
+        ]
+    }
+}
