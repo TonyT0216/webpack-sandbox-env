@@ -1,5 +1,8 @@
-export const plugins = {
-  'postcss-preset-env': {
-    browsers: 'last 2 versions',
+/* eslint-disable no-undef */
+module.exports = {
+  plugins: {
+    'postcss-preset-env': {
+      browsers: 'last 2 versions',
+    },
   },
-};
+}
